@@ -11,7 +11,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/rpc"
 	"github.com/pkg/errors"
-	"github.com/qtumproject/solar/contract"
+	"github.com/recryptproject/solar/contract"
 )
 
 type Deployer struct {

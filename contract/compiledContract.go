@@ -6,7 +6,7 @@ import (
 
 	"github.com/ethereum/go-ethereum/crypto/sha3"
 	"github.com/pkg/errors"
-	"github.com/qtumproject/solar/abi"
+	"github.com/recryptproject/solar/abi"
 )
 
 type ABIDefinition struct {

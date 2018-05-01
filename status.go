@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/qtumproject/solar/contract"
+	"github.com/recryptproject/solar/contract"
 )
 
 func init() {

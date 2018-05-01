@@ -5,7 +5,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/qtumproject/solar/contract"
+	"github.com/recryptproject/solar/contract"
 
 	"github.com/pkg/errors"
 )

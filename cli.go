@@ -10,18 +10,18 @@ import (
 	"sync"
 
 	"github.com/pkg/errors"
-	"github.com/qtumproject/solar/contract"
-	"github.com/qtumproject/solar/deployer"
-	"github.com/qtumproject/solar/deployer/eth"
-	"github.com/qtumproject/solar/deployer/qtum"
-	"github.com/qtumproject/solar/varstr"
+	"github.com/recryptproject/solar/contract"
+	"github.com/recryptproject/solar/deployer"
+	"github.com/recryptproject/solar/deployer/eth"
+	"github.com/recryptproject/solar/deployer/recrypt"
+	"github.com/recryptproject/solar/varstr"
 	kingpin "gopkg.in/alecthomas/kingpin.v2"
 )
 
 var (
 	app               = kingpin.New("solar", "Solidity smart contract deployment management.")
-	qtumRPC           = app.Flag("qtum_rpc", "RPC provider url").Envar("QTUM_RPC").String()
-	qtumSenderAddress = app.Flag("qtum_sender", "(qtum) Sender UXTO Address").Envar("QTUM_SENDER").String()
+	recryptRPC           = app.Flag("recrypt_rpc", "RPC provider url").Envar("RECRYPT_RPC").String()
+	recryptSenderAddress = app.Flag("recrypt_sender", "(recrypt) Sender UXTO Address").Envar("RECRYPT_SENDER").String()
 
 	// geth --rpc --rpcapi="eth,personal,miner"
 	ethRPC    = app.Flag("eth_rpc", "RPC provider url").Envar("ETH_RPC").String()
@@ -99,10 +99,10 @@ func (c *solarCLI) ContractsRepository() *contract.ContractsRepository {
 	return c.repo
 }
 
-func (c *solarCLI) QtumRPC() *qtum.RPC {
-	rpc, err := qtum.NewRPC(*qtumRPC)
+func (c *solarCLI) RecryptRPC() *recrypt.RPC {
+	rpc, err := recrypt.NewRPC(*recryptRPC)
 	if err != nil {
-		fmt.Println("Invalid QTUM RPC URL:", *qtumRPC)
+		fmt.Println("Invalid RECRYPT RPC URL:", *recryptRPC)
 		os.Exit(1)
 	}
 
@@ -135,13 +135,13 @@ func (c *solarCLI) Deployer() (deployer deployer.Deployer) {
 	var err error
 	var rpcURL *url.URL
 
-	if rawurl := *qtumRPC; rawurl != "" {
+	if rawurl := *recryptRPC; rawurl != "" {
 
 		rpcURL, err = url.ParseRequestURI(rawurl)
 		if err != nil {
 			log.Fatalf("Invalid RPC url: %#v", rawurl)
 		}
-		deployer, err = qtum.NewDeployer(rpcURL, c.ContractsRepository(), *qtumSenderAddress)
+		deployer, err = recrypt.NewDeployer(rpcURL, c.ContractsRepository(), *recryptSenderAddress)
 	}
 
 	if rawurl := *ethRPC; rawurl != "" {
@@ -154,7 +154,7 @@ func (c *solarCLI) Deployer() (deployer deployer.Deployer) {
 	}
 
 	if deployer == nil {
-		log.Fatalln("Please specify RPC url by setting QTUM_RPC or ETH_RPC or using flag --qtum_rpc or --eth_rpc")
+		log.Fatalln("Please specify RPC url by setting RECRYPT_RPC or ETH_RPC or using flag --recrypt_rpc or --eth_rpc")
 	}
 
 	if err != nil {

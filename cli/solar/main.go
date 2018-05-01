@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/qtumproject/solar"
+	"github.com/recryptproject/solar"
 )
 
 func main() {

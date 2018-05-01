@@ -1,8 +1,8 @@
 pragma solidity ^0.4.0;
 
-contract QtumTest {
+contract RecryptTest {
    uint storedNumber;
-   function QtumTest() {
+   function RecryptTest() {
        storedNumber=1;
    }
    function setNumber(uint number) public {

@@ -1,4 +1,4 @@
-package qtum
+package recrypt
 
 import (
 	"bytes"
@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/qtumproject/solar/contract"
+	"github.com/recryptproject/solar/contract"
 )
 
 type jsonRPCRequest struct {
@@ -110,6 +110,6 @@ func (rpc *RPC) Call(result interface{}, method string, params ...interface{}) (
 		return
 	}
 
-	// QTum RPC returns 500 for RPC error
+	// Recrypt RPC returns 500 for RPC error
 	return jsonResult.Error
 }

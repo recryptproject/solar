@@ -1,37 +1,37 @@
 # Install
 
 ```
-go get -u github.com/qtumproject/solar/cli/solar
+go get -u github.com/recryptproject/solar/cli/solar
 ```
 
 `solar` assumes that the [Solidity compiler](https://github.com/ethereum/solidity) is already installed.
 
 # Prototype for Smart Contract deployment tool
 
-## QTUM
+## RECRYPT
 
-Start qtumd in regtest mode:
-
-```
-qtumd -regtest -rpcuser=howard -rpcpassword=yeh
-```
-
-Use env variable to specify the local qtumd RPC node:
+Start recryptd in regtest mode:
 
 ```
-export QTUM_RPC=http://howard:yeh@localhost:13889
+recryptd -regtest -rpcuser=howard -rpcpassword=yeh
 ```
 
-## QTUM Docker
+Use env variable to specify the local recryptd RPC node:
 
-You can run qtumd with docker, which comes bundled with solar (and `solc`):
+```
+export RECRYPT_RPC=http://howard:yeh@localhost:13889
+```
+
+## RECRYPT Docker
+
+You can run recryptd with docker, which comes bundled with solar (and `solc`):
 
 ```
 docker run -it --rm \
   --name myapp \
   -v `pwd`:/dapp \
   -p 3889:3889 \
-  hayeah/qtumportal
+  hayeah/recryptportal
 ```
 
 Then you enter into the container by running:
@@ -225,8 +225,8 @@ Compile Solidity contracts.
 
 Flags:
   --help                     Show context-sensitive help (also try --help-long and --help-man).
-  --qtum_rpc=QTUM_RPC        RPC provider url
-  --qtum_sender=QTUM_SENDER  (qtum) Sender UXTO Address
+  --recrypt_rpc=RECRYPT_RPC        RPC provider url
+  --recrypt_sender=RECRYPT_SENDER  (recrypt) Sender UXTO Address
   --eth_rpc=ETH_RPC          RPC provider url
   --env="development"        Environment name
   --repo=REPO                Path of contracts repository

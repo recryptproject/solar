@@ -1,22 +1,22 @@
-package qtum
+package recrypt
 
 import (
 	"net/url"
 	"time"
 
-	"github.com/qtumproject/solar/b58addr"
+	"github.com/recryptproject/solar/b58addr"
 
 	"math/rand"
 
 	"github.com/pkg/errors"
-	"github.com/qtumproject/solar/contract"
+	"github.com/recryptproject/solar/contract"
 )
 
 type Deployer struct {
 	rpc *RPC
 	*contract.ContractsRepository
 
-	// qtum base58 sender address used to create a contract.
+	// recrypt base58 sender address used to create a contract.
 	senderAddress string
 }
 
