@@ -19,7 +19,7 @@ recryptd -regtest -rpcuser=howard -rpcpassword=yeh
 Use env variable to specify the local recryptd RPC node:
 
 ```
-export RECRYPT_RPC=http://howard:yeh@localhost:13889
+export RECRYPT_RPC=http://howard:yeh@localhost:18489
 ```
 
 ## RECRYPT Docker
@@ -30,7 +30,7 @@ You can run recryptd with docker, which comes bundled with solar (and `solc`):
 docker run -it --rm \
   --name myapp \
   -v `pwd`:/dapp \
-  -p 3889:3889 \
+  -p 8489:8489 \
   hayeah/recryptportal
 ```
 
